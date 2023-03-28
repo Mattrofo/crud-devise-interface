@@ -51,13 +51,13 @@
       <div class="d-flex justify-content-center">
         <%= link_to room_path(room), class: "deco-none" do%>
         <div class="card-room">
-            <img src=<%= current_user.photo %>, class="card-room-user avatar-bordered" />
+            <%= image_tag room.photo %>
           <div class="card-room-infos">
             <div>
               <h2><%= room.name%></h2>
               <p><%= room.address %></p>
             </div>
-            <img src= <%= current_user.photo %>, class="card-room-user avatar-bordered" />
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob", class="card-room-user avatar-bordered" />
             <div class="card-room-princing">
               <h2><%= room.price %>€</h2>
             </div>
