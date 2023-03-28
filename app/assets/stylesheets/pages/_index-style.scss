@@ -52,3 +52,20 @@
   transition-property: 0.8s;
   cursor: grab;
 }
+
+.grid-index {
+  padding: 1em;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+  grid-gap: 10px;
+}
+
+.deco-none {
+  text-decoration: none;
+  color: #111;
+}
+
+.deco-none:hover {
+  color: #6b6c64;
+}

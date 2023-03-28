@@ -2,6 +2,9 @@ class RoomsController < ApplicationController
 
   def index
     @rooms = Room.all
+    if params[:query].present?
+    @rooms = Room.search_by_address_and_price(params[:query])
+    end
   end
 
   def show
@@ -43,7 +46,7 @@ class RoomsController < ApplicationController
   private
 
   def set_params
-    params.require(:room).permit(:name, :address, :price, :description)
+    params.require(:room).permit(:name, :address, :price, :description, :photo)
   end
 
 
