@@ -1,1 +1,49 @@
 // Specific CSS for your home-page
+.background_voyage {
+  background-image: url(https://images.unsplash.com/photo-1522509585149-c9cd39d1ff08?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3594&q=80);
+  background-size: cover;
+  background-position: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  padding: 2em;
+  margin: 0 auto;
+}
+
+.hero-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hero-row h1 {
+  font-size: clamp(2rem, 3vw, 5rem);
+  font-weight: 900;
+  margin: 0 0 1em;
+  line-height: 0.8;
+  color: #fff;
+}
+
+.hero-row p {
+  color: #fff;
+}
+
+.hero-row a {
+  display: inline-block;
+}
+
+.btn-kaki {
+  display: flex;
+  margin-left: 0;
+  text-decoration: none;
+  border-radius: 30px;
+  border: 1px solid green;
+  width: 150px;
+}
+
+.logo-rond {
+  border-radius: 50%;
+}
