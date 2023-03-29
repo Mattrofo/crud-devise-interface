@@ -1,0 +1,8 @@
+<%= simple_form_for @room do |f| %>
+  <%= f.input :name, placeholder: 'name of the trip' %>
+  <%= f.input :address, placeholder: 'country' %>
+  <%= f.input :description, placeholder: 'What it is about, with which animal, which activity ?' %>
+  <%= f.input :price, placeholder: '150€' %>
+  <%= f.input :photo, placeholder: 'jpeg or pgn format' %>
+  <%= f.submit class: 'btn btn-success' %>
+<% end %>

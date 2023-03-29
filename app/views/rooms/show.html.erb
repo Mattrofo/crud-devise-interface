@@ -1,0 +1,11 @@
+<h1>show</h1>
+
+
+<%= @room.description %>
+<%= @room.price %>
+<%= image_tag @room.photo %>
+
+
+<%= link_to "go to index", rooms_path, class:"btn btn-secondary" %>
+<%= link_to "Edit", edit_room_path %>
+<%= link_to "Delete", room_path(@room), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-danger" %>

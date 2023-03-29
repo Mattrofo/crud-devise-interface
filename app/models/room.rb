@@ -4,7 +4,7 @@ class Room < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_one_attached :photo
 
-  validates :price, :name, :user, :address, presence: true
+  validates :price, :name, :user, :address, :description, :photo, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_address_and_price,
