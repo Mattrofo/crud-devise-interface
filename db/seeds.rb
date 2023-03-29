@@ -5,10 +5,10 @@ User.destroy_all
 p "------ All users Destroyed ----------"
 Room.destroy_all
 p "------ All rooms Destroyed ----------"
-user1 = User.create(email: "mathieu@gmail.com", password: "coucou", name: "Mathieu")
-user2 = User.create(email: "dorian@gmail.com", password: "coucou", name: "Dorian")
-user3 = User.create(email: "jernito@gmail.com", password: "coucou", name: "Jernito")
-user4 = User.create(email: "eva@gmail.com", password: "coucou", name: "Eva")
+user1 = User.create(email: "mathieu@gmail.com", password: "coucou", name: "Mathieu", role: "manager")
+user2 = User.create(email: "dorian@gmail.com", password: "coucou", name: "Dorian", role: "collaborator")
+user3 = User.create(email: "jernito@gmail.com", password: "coucou", name: "Jernito", role: "collaborator")
+user4 = User.create(email: "eva@gmail.com", password: "coucou", name: "Eva", role: "collaborator")
 
 
 file = URI.open("app/assets/images/Dorian.jpeg")
@@ -26,6 +26,9 @@ user3.save
 file = URI.open("app/assets/images/Mathieu.jpeg")
 user1.photo.attach(io: file, filename: "Mathieu.jpeg", content_type: "image/jpeg")
 user1.save
+
+
+
 
 p "------ #{User.count} user created ----------"
 

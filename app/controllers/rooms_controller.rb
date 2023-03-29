@@ -1,5 +1,7 @@
 class RoomsController < ApplicationController
 
+      before_action :check_manager_role, except: [:index, :show]
+
   def index
     @rooms = policy_scope(Room)
     if params[:query].present?
@@ -55,5 +57,10 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:name, :address, :price, :description, :photo)
   end
 
+    def check_manager_role
+      unless current_user.role == "manager"
+        redirect_to root_path, alert: "You are not allowed to access this"
+      end
+    end
 
 end
