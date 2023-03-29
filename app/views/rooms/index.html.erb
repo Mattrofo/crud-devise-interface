@@ -51,13 +51,13 @@
       <div class="d-flex justify-content-center">
         <%= link_to room_path(room), class: "deco-none", target:"_blank" do%>
         <div class="card-room">
-            <%= image_tag room.photo %>
+            <%= cl_image_tag room.photo.key, height: 700, crop: :fill  %>
           <div class="card-room-infos">
             <div>
               <h2><%= room.name%></h2>
               <p><%= room.address %></p>
             </div>
-              <%= image_tag room.user.photo, class:"card-room-user avatar-bordered" %>
+              <%= cl_image_tag room.user.photo.key, crop: :fill, class:"card-room-user avatar-bordered" %>
             <div class="card-room-princing">
               <h2><%= room.price %>€</h2>
             </div>

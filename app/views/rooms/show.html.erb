@@ -1,8 +1,11 @@
 <h1>show</h1>
 
 
+<%= @room.name %>
 <%= @room.description %>
 <%= @room.price %>
+<%= cl_image_tag @room.photo.key, height: 300, width: 400, crop: :fill %>
+
 <!--<%= image_tag @room.photo %>-->
 
 <% if @room.user != current_user %>
