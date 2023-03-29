@@ -11,4 +11,9 @@ class User < ApplicationRecord
   has_many :bookings_as_owner, through: :rooms, source: :bookings
 
   validates :password, :email, presence: true
+
+  def manager?
+    role == manager
+  end
+
 end

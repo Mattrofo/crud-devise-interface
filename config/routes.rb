@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/new'
+  get 'users/create'
+  get 'users/show'
+  get 'users/edit'
+  get 'users/update'
+  get 'users/destroy'
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
