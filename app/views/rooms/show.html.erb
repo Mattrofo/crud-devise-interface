@@ -5,16 +5,18 @@
 <%= @room.price %>
 <!--<%= image_tag @room.photo %>-->
 
+<% if @room.user != current_user %>
       <div class="form-show">
         <div class="bg-white rounded p-3 shadow">
           <h3>New reservation</h3>
           <%= simple_form_for [@room, @booking], data: { controller: 'flatpickr' } do |f| %>
             <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startDate" } } %>
             <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endDate" } } %>
-            <%= f.submit "Book it", class: "btn-noir"%>
+            <%= f.submit "Book it", class: "btn btn-success"%>
           <% end %>
         </div>
       </div>
+<% end %>
 
 
 
