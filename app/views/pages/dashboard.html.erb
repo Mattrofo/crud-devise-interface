@@ -1,0 +1,122 @@
+<div class="dash-container">
+  <div class="dash-king-div">
+
+    <div class="dash-title">
+      <h1>Tableau de bord de <%= current_user.name %></h1>
+    </div>
+
+    <div class="dash-big-div">
+
+
+
+      <div class="dash-orizon-div">
+
+        <div class="dash-rooms">
+
+          <div class="dash-info">
+          <h1>Mes Annonces</h1>
+            <div class="dash-info-content">
+
+              <% @rooms.each do |room| %>
+
+
+
+                  <div>
+                    <div class="image-container">
+                      <%= cl_image_tag room.photo.key, height: 200, width: 200, crop: :fill %>
+                    </div>
+                    <br>
+                    <%= link_to room_path(room), class:'link-without-style' do  %>
+                      <p><%= room.name.upcase %></p>
+                    <% end %>
+                    <br>
+                  </div>
+
+              <% end %>
+          </div>
+        </div>
+
+        <div class="dash-favories">
+          <h1>Demandes de réservation</h1>
+          <div class="dash-info-content">
+
+              <% @bookings_as_owner.each do |booking| %>
+                <div>
+                  <div class="image-container">
+                    <%= cl_image_tag booking.room.photo.key, height: 200, width: 200, crop: :fill %>
+                  </div>
+
+                  <br>
+                  <p><%= booking.room.name.upcase %></p>
+                  <br>
+                  <p>from : <%= booking.user.email %></p>
+                  <p>from : <%= booking.start_date.strftime('%-d %b. %y') %></p>
+                  <p>to : <%= booking.end_date.strftime('%-d %b. %y') %></p>
+                  <br>
+
+
+
+                  <% if booking.status == "accepted" || booking.status == "refused" %>
+
+                      <p class="<%= booking.status == 'accepted' ? 'accepted-confirmation' : ' refused-confirmation' %>">
+                      <strong><%= booking.status.upcase %></strong></p>
+                  <% end %>
+
+                    <% if booking.status == "pending" %>
+
+                    <%= link_to "Accept", booking_accepted_path(booking), { class: "accepted-link", data: {turbo_method: :patch, turbo_confirm: "Are you sure to accept?"} } %> ||
+
+                    <%= link_to "Refused", booking_refused_path(booking), { class: "refused-link", data: {turbo_method: :patch, turbo_confirm: "Are you sure to decline?"} } %>
+                    <% end %>
+
+                  <br>
+                  <p>
+
+                  </p>
+                  <br>
+                </div>
+
+
+              <% end %>
+
+            </div>
+        </div>
+
+        <div class="dash-locations">
+          <h1>Mes Locations</h1>
+          <div class="dash-info-content">
+
+            <% @bookings.each do |booking| %>
+                <div>
+                  <div class="image-container">
+                    <%= cl_image_tag booking.room.photo.key, height: 200, width: 200, crop: :fill %>
+                  </div>
+
+
+                  <br>
+                  <p><%= booking.room.name.upcase %></p>
+                  <p><%= booking.room.user.email %></p>
+
+
+                  <p>Du : <%= booking.start_date.strftime('%-d %b. %y') %></p>
+                  <p>Au : <%= booking.end_date.strftime('%-d %b. %y') %></p>
+
+                      <p class="<%= booking.status == 'accepted' ? 'accepted-confirmation' : ' refused-confirmation' %>">
+                      <strong><%= booking.status %></strong></p>
+
+
+
+                  <br>
+                </div>
+              <% end %>
+
+
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
