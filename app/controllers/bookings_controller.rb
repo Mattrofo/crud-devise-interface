@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     @room = Room.find(params[:room_id])
     @booking.room = @room
     @booking.status = "pending"
+    authorize @booking
     if @booking.save
       flash[:success] = "Booking crated successfully!"
       redirect_to dashboard_path
@@ -21,6 +22,7 @@ class BookingsController < ApplicationController
   def accepted
     @booking = Booking.find(params[:id])
     @booking.status = "accepted"
+    authorize @booking
     @booking.save
     redirect_to dashboard_path
   end
@@ -28,6 +30,7 @@ class BookingsController < ApplicationController
   def refused
     @booking = Booking.find(params[:id])
     @booking.status = "refused"
+    authorize @booking
     @booking.save
     redirect_to dashboard_path
   end
@@ -36,7 +39,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :user_id, :room_id)
+    params.require(:booking).permit(:start_date, :end_date, :room_id)
   end
 
 
